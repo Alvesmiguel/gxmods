@@ -1,0 +1,102 @@
+from fpdf import FPDF
+
+# Criação da classe PDF
+pdf = FPDF()
+pdf.set_auto_page_break(auto=True, margin=15)
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+
+# Título do PDF
+pdf.set_font("Arial", style="B", size=16)
+pdf.cell(200, 10, txt="Criando um Mod Opera GX com Mangás", ln=True, align="C")
+
+# Introdução
+pdf.ln(10)
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt=(
+    "Este guia detalha como criar um mod para o navegador Opera GX que exibe imagens e cenas animadas de mangás. "
+    "Ele inclui instruções para configurar papéis de parede personalizados, adicionar cenas animadas e criar um script "
+    "usando Tampermonkey para um resultado dinâmico e interativo."
+))
+
+# Seção 1: Preparar os Recursos
+pdf.ln(10)
+pdf.set_font("Arial", style="B", size=14)
+pdf.cell(0, 10, txt="1. Preparar os Recursos", ln=True)
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt=(
+    "- Colete imagens de mangás em alta qualidade.\n"
+    "- Use GIFs ou converta vídeos curtos para o formato WebM usando ferramentas como FFmpeg.\n"
+    "- Ferramentas recomendadas: Photoshop, GIMP e FFmpeg."
+))
+
+# Seção 2: Criar o Papel de Parede no Opera GX
+pdf.ln(5)
+pdf.set_font("Arial", style="B", size=14)
+pdf.cell(0, 10, txt="2. Criar o Papel de Parede no Opera GX", ln=True)
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt=(
+    "1. Acesse as configurações do Opera GX.\n"
+    "2. Vá para 'Personalização' > 'Fundo'.\n"
+    "3. Faça upload de imagens favoritas de mangás como papel de parede.\n"
+    "4. Para alternar entre imagens, use ferramentas como Wallpaper Engine."
+))
+
+# Seção 3: Adicionar Cenas Animadas
+pdf.ln(5)
+pdf.set_font("Arial", style="B", size=14)
+pdf.cell(0, 10, txt="3. Adicionar Cenas Animadas (GIFs ou WebM)", ln=True)
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt=(
+    "O Opera GX não suporta vídeos diretamente como plano de fundo, mas você pode usar ferramentas externas:\n"
+    "- Use Wallpaper Engine para criar um fundo animado.\n"
+    "- Converta GIFs ou vídeos para WebM com FFmpeg usando o comando:\n"
+    "  ffmpeg -i input.gif -c:v libvpx-vp9 -b:v 2M output.webm"
+))
+
+# Seção 4: Criar um Mod com Tampermonkey
+pdf.ln(5)
+pdf.set_font("Arial", style="B", size=14)
+pdf.cell(0, 10, txt="4. Criar um Mod com Tampermonkey", ln=True)
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt=(
+    "1. Instale a extensão Tampermonkey no Opera GX.\n"
+    "2. Escreva um script para injetar CSS personalizado e adicionar uma galeria de imagens ou vídeos animados. "
+    "Exemplo de script:\n"
+))
+pdf.set_font("Courier", size=10)
+pdf.multi_cell(0, 10, txt=(
+    "// ==UserScript==\n"
+    "// @name         Manga Background for Opera GX\n"
+    "// @namespace    http://tampermonkey.net/\n"
+    "// @version      1.0\n"
+    "// @description  Adds manga animations as background\n"
+    "// @author       YourName\n"
+    "// @match        *://*/*\n"
+    "// @grant        none\n"
+    "// ==/UserScript==\n\n"
+    "(function() {\n"
+    "    'use strict';\n"
+    "    const body = document.querySelector('body');\n"
+    "    body.style.background = 'url(\"https://your-manga-image-url.com\") no-repeat center center fixed';\n"
+    "    body.style.backgroundSize = 'cover';\n"
+    "})();"
+))
+
+# Seção 5: Distribuir ou Compartilhar
+pdf.ln(5)
+pdf.set_font("Arial", style="B", size=14)
+pdf.cell(0, 10, txt="5. Distribuir ou Compartilhar", ln=True)
+pdf.set_font("Arial", size=12)
+pdf.multi_cell(0, 10, txt=(
+    "Para compartilhar seu mod:\n"
+    "- Compile o script e as imagens.\n"
+    "- Hospede em um site como GitHub.\n"
+    "- Ensine os usuários a instalar o mod usando Tampermonkey ou outra ferramenta."
+))
+
+# Salvar o PDF
+output_path = "Criando_Mod_Opera_GX_Mangas.pdf"
+pdf.output(output_path)
+print(f"PDF gerado: {output_path}")
+
